@@ -1,4 +1,5 @@
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, {desc = "Open explorer"})
+vim.keymap.set("n", "<leader>q", ":wqa<CR>", {})
 
 -- Center screen when jumping
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })

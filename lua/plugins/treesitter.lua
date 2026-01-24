@@ -7,7 +7,7 @@ return {
 		require("nvim-treesitter")
 
 		configs.setup ({
-			ensure_installed = {"c", "lua", "rust", "java", "haskell"},
+			auto_install = true,
 			highlight = { enable = true },
 			indent = { enable = true },
 		})
