@@ -14,8 +14,7 @@ vim.opt.number = true                              -- Line numbers
 vim.opt.relativenumber = true                      -- Relative line numbers
 vim.opt.cursorline = true
 vim.api.nvim_set_hl(0, "CursorLine", {
-	bg = "#666666",
-
+	bg = "#303030",
 })
 vim.opt.cmdheight = 1                              -- Command line height
 vim.opt.wrap = false                               -- Don't wrap lines
@@ -23,6 +22,10 @@ vim.opt.scrolloff = 10                             -- Keep 10 lines above/below 
 vim.opt.sidescrolloff = 8                          -- Keep 8 columns left/right of cursor
 vim.opt.winborder = "rounded"			   -- Rounded pop-up container for fn infos	
 vim.opt.clipboard = "unnamedplus"		   -- System clipboard as default reg
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 
 -- Indentation
 vim.opt.smartindent = true                         -- Smart auto-indenting
@@ -51,3 +54,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+-- Command-line completion
+vim.opt.wildmenu = true
+

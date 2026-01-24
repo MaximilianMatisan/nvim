@@ -23,7 +23,7 @@ return {
 						deleted   = "x",
 						renamed   = ">",
 						untracked = "?",
-						unstaged  = "",
+						unstaged  = "",
 						ignored   = "i",
 						staged    = "s",
 						conflict  = "!",

@@ -2,10 +2,10 @@ local severity = vim.diagnostic.severity
 vim.diagnostic.config({
 	signs = {
 		text = {
-			[severity.ERROR] = " ",
-			[severity.WARN] = " ",
-			[severity.HINT] = " ",
-			[severity.INFO] = " "
+			[severity.ERROR] = "E",
+			[severity.WARN] = "W",
+			[severity.HINT] = "󰌶",
+			[severity.INFO] = "i"
 		}
 	},
   virtual_text = true,
