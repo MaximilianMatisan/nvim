@@ -24,7 +24,15 @@ return {
       vim.lsp.config.lua_ls = { capabilities = capabilities }
       vim.lsp.config.rust_analyzer = {
         capabilities = capabilities,
-        settings = { ["rust-analyzer"] = { check = { command = "clippy" } } },
+        settings = {
+          ["rust-analyzer"] = {
+            diagnostics = {
+              enable = true,
+              disabled = {}, -- no disabled warnings
+            },
+            checkOnSave = { command = "clippy" },
+          }
+        },
       }
       vim.lsp.config.jdtls = { capabilities = capabilities }
 
@@ -33,8 +41,9 @@ return {
 
       -- Keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover)
+      vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, { desc = "Format" })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition)
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
     end
-    },
+  },
 }
