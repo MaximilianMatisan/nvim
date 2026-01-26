@@ -12,8 +12,8 @@ return {
 		require("neo-tree").setup({
 				window = {
 					position = "left",
-					width = 0,
-					auto_expand_width = true
+					width = 30,
+					auto_expand_width = false,
 				},
 			default_component_configs = {
 				git_status = {
@@ -23,7 +23,7 @@ return {
 						deleted   = "x",
 						renamed   = ">",
 						untracked = "?",
-						unstaged  = "",
+						unstaged  = "u",
 						ignored   = "i",
 						staged    = "s",
 						conflict  = "!",

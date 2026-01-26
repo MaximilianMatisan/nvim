@@ -1,5 +1,8 @@
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, {desc = "Open explorer"})
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open explorer" })
 vim.keymap.set("n", "<leader>q", ":wqa<CR>", {})
+
+-- Diagnistic pop-up
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show line diagnostic" })
 
 -- Center screen when jumping
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
@@ -25,3 +28,9 @@ vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizonta
 --vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
 --vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
+-- Terminal
+vim.keymap.set('n', "<leader>t", function()
+  vim.cmd("botright split | resize 12 | terminal")
+  vim.cmd("startinsert")
+end, {})
+vim.keymap.set("t", "<Esc><Esc>", "exit<CR>", {})
