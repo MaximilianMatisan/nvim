@@ -3,7 +3,7 @@ require("maxi.diagnostics")
 
 -- theme & transparency
 -- PLUGIN-THEMES: catppuccin vague rose-pine
-vim.cmd.colorscheme("catppuccin") --default unokai desert elflord evening industry morning murphy pablo peachpuff ron shine slate torte zellner
+vim.cmd.colorscheme("rose-pine") --default unokai desert elflord evening industry morning murphy pablo peachpuff ron shine slate torte zellner
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })

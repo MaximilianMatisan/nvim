@@ -11,7 +11,7 @@ return {
 		end
 		require("lualine").setup({
 			options = {
-				theme = "auto",
+				theme = "auto", -- auto
 				section_separators = "",
 				component_separators = "",
 				globalstatus = true,
