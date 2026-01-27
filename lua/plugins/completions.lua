@@ -23,8 +23,13 @@ return {
           end,
         },
         window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
+          completion = {
+            border = "rounded",
+            scrollbar = false,
+          },
+          documentation = {
+            border = "rounded",
+          },
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -45,7 +50,6 @@ return {
         --   { name = 'buffer' },
         -- }
       })
-
     end
   }
 }

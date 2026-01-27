@@ -1,7 +1,13 @@
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open explorer" })
-vim.keymap.set("n", "<leader>q", ":wqa<CR>", {})
+-- vim.keymap.set("n", "<leader>q", ":wqa<CR>", {})
+vim.keymap.set("n", "<leader>wa", ":wa<CR>", {})
 
--- Diagnistic pop-up
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- Diagnostic pop-up
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show line diagnostic" })
 
 -- Center screen when jumping
@@ -33,4 +39,4 @@ vim.keymap.set('n', "<leader>t", function()
   vim.cmd("botright split | resize 12 | terminal")
   vim.cmd("startinsert")
 end, {})
-vim.keymap.set("t", "<Esc><Esc>", "exit<CR>", {})
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>:q<CR>', { desc = 'Exit terminal mode' })

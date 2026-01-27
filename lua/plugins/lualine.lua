@@ -13,7 +13,7 @@ return {
       options = {
         theme = "auto", -- auto, onedark
         -- section_separators = "",
-        -- component_separators = "",
+        component_separators = "",
         globalstatus = true,
       },
       sections = {

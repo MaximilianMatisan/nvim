@@ -20,12 +20,16 @@ vim.opt.cmdheight = 1                              -- Command line height
 vim.opt.wrap = false                               -- Don't wrap lines
 vim.opt.scrolloff = 10                             -- Keep 10 lines above/below cursor 
 vim.opt.sidescrolloff = 8                          -- Keep 8 columns left/right of cursor
-vim.opt.winborder = "rounded"			   -- Rounded pop-up container for fn infos	
-vim.opt.clipboard = "unnamedplus"		   -- System clipboard as default reg
+vim.opt.winborder = "rounded"			                 -- Rounded pop-up container for fn infos	
+vim.schedule(function() vim.o.clipboard = 'unnamedplus' end) -- os clipboard as default reg
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.showmode = false
+vim.g.have_nerd_font = true
+vim.o.updatetime = 250                             -- Decrease update time
+vim.o.timeoutlen = 300                             -- Decrease mapped sequence wait time
 
 -- Indentation
 vim.opt.smartindent = true                         -- Smart auto-indenting
@@ -48,12 +52,13 @@ vim.opt.splitbelow = true                          -- Horizontal splits go below
 vim.opt.splitright = true                          -- Vertical splits go right
 
 -- Highlight yanked text
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = augroup,
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function() vim.hl.on_yank() end,
 })
 -- Command-line completion
 vim.opt.wildmenu = true
 
+-- Save undo history
+vim.o.undofile = true
