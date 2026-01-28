@@ -35,8 +35,45 @@ vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizonta
 --vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- Terminal
-vim.keymap.set('n', "<leader>t", function()
-  vim.cmd("botright split | resize 12 | terminal")
+
+local function open_bottom_split()
+  vim.cmd("botright split | resize 12")
+end
+
+local terminal_buffer_number = nil
+
+local function get_or_create_terminal_buffer()
+  if terminal_buffer_number == nil or not vim.api.nvim_buf_is_valid(terminal_buffer_number) then
+    open_bottom_split()
+    vim.cmd(":terminal")
+    terminal_buffer_number = vim.api.nvim_get_current_buf()
+    print("Create new terminal buffer " .. terminal_buffer_number)
+  else
+    open_bottom_split()
+    vim.api.nvim_set_current_buf(terminal_buffer_number)
+    print("Switch to terminal buffer " .. terminal_buffer_number)
+  end
   vim.cmd("startinsert")
+  return terminal_buffer_number -- return valid number
+end
+
+local function open_and_send_to_terminal(text)
+  local term_bufnr = get_or_create_terminal_buffer()
+  vim.api.nvim_chan_send(vim.b[term_bufnr].terminal_job_id, text)
+end
+
+vim.keymap.set('n', "<leader>t", get_or_create_terminal_buffer, { desc = "open or switch to terminal" })
+
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>:q<CR>', { desc = 'Exit terminal buffer' })
+
+vim.keymap.set('n', '<leader>rn', function()
+  -- local file_path = vim.api.nvim_buf_get_name(0);
+  -- local file_name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t")
+  local file_type = vim.bo.filetype
+
+  if (file_type == "rust") then
+    open_and_send_to_terminal("cargo run\n")
+  else
+    print("Run isn't configured for " .. file_type .. "!")
+  end
 end, {})
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>:q<CR>', { desc = 'Exit terminal mode' })
