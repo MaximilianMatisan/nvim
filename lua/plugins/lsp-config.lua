@@ -15,6 +15,7 @@ return {
         "lua_ls",
         "rust_analyzer",
         "jdtls",
+        "clangd",
       },
     },
     config = function()
@@ -35,9 +36,10 @@ return {
         },
       }
       vim.lsp.config.jdtls = { capabilities = capabilities }
+      vim.lsp.config.clangd = { capabilities = capabilities }
 
       -- Server starten
-      vim.lsp.enable({ "lua_ls", "rust_analyzer", "jdtls" })
+      vim.lsp.enable({ "lua_ls", "rust_analyzer", "jdtls", "clangd" })
 
       -- Keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover)
