@@ -31,7 +31,7 @@ return {
               enable = true,
               disabled = {}, -- no disabled warnings
             },
-            checkOnSave = { command = "clippy" },
+            checkOnSave = true,
           }
         },
       }

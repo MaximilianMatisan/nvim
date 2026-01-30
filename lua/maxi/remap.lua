@@ -67,12 +67,20 @@ vim.keymap.set('n', "<leader>t", get_or_create_terminal_buffer, { desc = "open o
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>:q<CR>', { desc = 'Exit terminal buffer' })
 
 vim.keymap.set('n', '<leader>rn', function()
-  -- local file_path = vim.api.nvim_buf_get_name(0);
-  -- local file_name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t")
   local file_type = vim.bo.filetype
+  local whole_file_path = vim.api.nvim_buf_get_name(0)
+  local file_dir = vim.fn.fnamemodify(whole_file_path, ":h")
+  local file_name = vim.fn.fnamemodify(whole_file_path, ":t")
+  local binary = vim.fn.fnamemodify(file_name, ":r")
 
   if (file_type == "rust") then
     open_and_send_to_terminal("cargo run\n")
+  elseif (file_type == "c") then
+    open_and_send_to_terminal(
+      "cd " .. file_dir ..
+      "&& clang " .. file_name .. " -o " .. binary ..
+      "&& ./" .. binary .. "\n"
+    )
   else
     print("Run isn't configured for " .. file_type .. "!")
   end
