@@ -4,10 +4,10 @@ return {
   priority = 1000, -- make sure to load this before all the other plugins
   config = function()
     require("vague").setup({
-	transparent = true,
-	colors = {
-		comment = "#868695",
-	}
+      transparent = true,
+      colors = {
+        comment = "#868695",
+      }
     })
   end
 }

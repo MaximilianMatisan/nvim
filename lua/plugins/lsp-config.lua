@@ -37,9 +37,10 @@ return {
       }
       vim.lsp.config.jdtls = { capabilities = capabilities }
       vim.lsp.config.clangd = { capabilities = capabilities }
+      -- vim.lsp.config.typescript_language_server = { capabilities = capabilities }
 
       -- Server starten
-      vim.lsp.enable({ "lua_ls", "rust_analyzer", "jdtls", "clangd" })
+      vim.lsp.enable({ "lua_ls", "rust_analyzer", "jdtls", "clangd", "typescript_language_server" })
 
       -- Keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover)
